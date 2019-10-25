@@ -8,6 +8,7 @@ class App extends React.Component {
     this.state = {
       todos: todoList
     };
+    this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(id) {
