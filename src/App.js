@@ -3,15 +3,11 @@ import TodoItem from "./TodoItem";
 import todoList from "./TodoList";
 
 class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      todos: todoList
-    };
-    this.handleChange = this.handleChange.bind(this);
-  }
+  state = {
+    todos: todoList
+  };
 
-  handleChange(id) {
+  handleChange = id => {
     this.setState(prevState => {
       const updatedTodos = prevState.todos.map(todo => {
         if (todo.id === id) {
@@ -23,14 +19,19 @@ class App extends React.Component {
         todos: updatedTodos
       };
     });
-  }
+  };
 
   render() {
     const todoItems = this.state.todos.map(item => (
       <TodoItem key={item.id} item={item} handleChange={this.handleChange} />
     ));
 
-    return <div className="todo-list">{todoItems}</div>;
+    return (
+      <div className="todo-list">
+        <h1>Todo List</h1>
+        {todoItems}
+      </div>
+    );
   }
 }
 
